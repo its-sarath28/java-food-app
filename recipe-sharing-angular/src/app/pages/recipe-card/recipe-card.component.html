@@ -1,0 +1,38 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <img mat-card-avatar class="example-header-image"
+            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGVvcGxlfGVufDB8fDB8fHww"
+            alt="profile" />
+        <mat-card-title>Recipe name</mat-card-title>
+        <mat-card-subtitle>creator name</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image class="max-h-[300px] object-cover"
+        src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+        <p class="">
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+            bred for hunting.
+        </p>
+    </mat-card-content>
+    <mat-card-actions class="flex justify-between mb-3">
+        <div>
+            <button mat-icon-button aria-label="Example icon button with a favorite icon">
+                <mat-icon>favorite</mat-icon>
+            </button>
+            <button (click)="handleOpenEditRecipeForm()" mat-icon-button
+                aria-label="Example icon button with a filter list icon">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button aria-label="Example icon button with a share icon">
+                <mat-icon>share</mat-icon>
+            </button>
+        </div>
+
+        <div>
+            <button mat-icon-button aria-label="Example icon button with a delete icon">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+    </mat-card-actions>
+</mat-card>

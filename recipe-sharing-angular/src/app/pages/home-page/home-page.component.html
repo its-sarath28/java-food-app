@@ -1,0 +1,21 @@
+<div class="pt-5 pb-10">
+    <div class="flex justify-center flex-wrap gap-5">
+        @for (item of recipes; track 1) {
+        <app-recipe-card />
+        }
+
+        @empty {
+        <div class="">
+            <p>
+                No recipes
+            </p>
+        </div>
+        }
+    </div>
+
+    <div class="fixed bottom-10 right-10">
+        <button (click)="handleOpenCreateRecipeModal()" mat-fab color="primary">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+</div>
