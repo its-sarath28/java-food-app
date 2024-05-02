@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges } from '@angular/core';
 import { RecipeCardComponent } from '../recipe-card/recipe-card.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateRecipeFormComponent } from '../create-recipe-form/create-recipe-form.component';
 import { AuthServiceService } from '../../services/auth/auth-service.service';
+import { RecipeServiceService } from '../../services/recipe/recipe-service.service';
 
 @Component({
   selector: 'app-home-page',
@@ -14,11 +15,12 @@ import { AuthServiceService } from '../../services/auth/auth-service.service';
   styleUrl: './home-page.component.scss',
 })
 export class HomePageComponent {
-  recipes = [2, 1, 3, 4, 5, 6];
+  recipes = [];
 
   constructor(
     public dialog: MatDialog,
-    public authService: AuthServiceService
+    public authService: AuthServiceService,
+    private recipeService: RecipeServiceService
   ) {}
 
   handleOpenCreateRecipeModal() {
@@ -27,6 +29,11 @@ export class HomePageComponent {
 
   ngOnInit() {
     // console.log('on init');ks
-    this.authService.getUserProfile().subscribe();
+    this.authService.getUserProfile();
+    this.recipeService.getRecipes().subscribe();
+    this.recipeService.recipeSubject.subscribe((state) => {
+      // console.log('state', state);
+      this.recipes = state.recipes;
+    });
   }
 }

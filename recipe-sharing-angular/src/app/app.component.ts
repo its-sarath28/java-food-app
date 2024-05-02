@@ -22,9 +22,18 @@ import { AuthServiceService } from './services/auth/auth-service.service';
 export class AppComponent {
   title = 'recipe-sharing-angular';
 
+  user: any = null;
+
   constructor(public authService: AuthServiceService) {}
 
   ngOnInit() {
-    this.authService.getUserProfile();
+    this.authService.getUserProfile().subscribe({
+      next: (data) => console.log('req user', data),
+      error: (error) => console.log('error', error),
+    });
+    this.authService.authSubject.subscribe((auth) => {
+      // console.log('auth state', auth);
+      this.user = auth.user;
+    });
   }
 }

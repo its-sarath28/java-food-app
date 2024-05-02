@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class RecipeServiceService {
-  private baseURL = 'http://localhost:5000/';
+  private baseURL = 'http://localhost:5000';
 
   constructor(private http: HttpClient) {}
 

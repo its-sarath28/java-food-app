@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthServiceService {
-  private baseURL = 'http://localhost:5000/';
+  private baseURL = 'http://localhost:5000';
 
   constructor(private http: HttpClient) {}
 
@@ -23,15 +23,15 @@ export class AuthServiceService {
   }
 
   getUserProfile(): Observable<any> {
-    const header = new HttpHeaders({
+    const headers = new HttpHeaders({
       Authorization: `Bearer ${localStorage.getItem('jwt')}`,
     });
 
     return this.http
-      .post<any>(`${this.baseURL}/api/user/profile`, { header })
+      .get<any>(`${this.baseURL}/api/user/profile`, { headers })
       .pipe(
         tap((user) => {
-          console.log('User profile');
+          // console.log('User profile');
           const currentState = this.authSubject.value;
           this.authSubject.next({
             ...currentState,

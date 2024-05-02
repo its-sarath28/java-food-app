@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
+import { RecipeServiceService } from '../../services/recipe/recipe-service.service';
 
 @Component({
   selector: 'app-update-recipe-form',
@@ -26,7 +27,10 @@ export class UpdateRecipeFormComponent {
     foodType: '',
   };
 
+  constructor(private recipeService: RecipeServiceService) {}
+
   onSubmit() {
-    console.log('values', this.recipeItem);
+    // console.log('values', this.recipeItem);
+    // this.recipeService.updateRecipe().subscribe();
   }
 }
