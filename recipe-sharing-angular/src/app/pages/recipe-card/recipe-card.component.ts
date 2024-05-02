@@ -25,7 +25,9 @@ export class RecipeCardComponent {
   ) {}
 
   handleOpenEditRecipeForm() {
-    this.dialog.open(UpdateRecipeFormComponent);
+    this.dialog.open(UpdateRecipeFormComponent, {
+      data: this.recipe,
+    });
   }
 
   ngOnInit() {
