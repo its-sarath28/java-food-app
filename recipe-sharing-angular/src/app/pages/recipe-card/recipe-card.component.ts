@@ -6,11 +6,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { UpdateRecipeFormComponent } from '../update-recipe-form/update-recipe-form.component';
 import { RecipeServiceService } from '../../services/recipe/recipe-service.service';
 import { Router } from '@angular/router';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-recipe-card',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, MatIconModule],
+  imports: [MatCardModule, MatButtonModule, MatIconModule, NgIf],
   templateUrl: './recipe-card.component.html',
   styleUrl: './recipe-card.component.scss',
 })

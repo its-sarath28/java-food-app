@@ -23,9 +23,9 @@ public class RecipeServiceImpl implements RecipeService {
         createdRecipe.setTitle(recipe.getTitle());
         createdRecipe.setImage(recipe.getImage());
         createdRecipe.setDescription(recipe.getDescription());
+        createdRecipe.setVegetarian(recipe.isVegetarian());
         createdRecipe.setUser(user);
         createdRecipe.setCreatedAt(LocalDateTime.now());
-
 
         return recipeRepository.save(createdRecipe);
     }
@@ -51,7 +51,7 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     public Recipe updateRecipe(Recipe recipe, Long id) throws Exception {
         Recipe oldRecipe = findRecipeById(id);
-       
+
         if (recipe.getTitle() != null) {
             oldRecipe.setTitle(recipe.getTitle());
         }
@@ -59,7 +59,7 @@ public class RecipeServiceImpl implements RecipeService {
         if (recipe.getImage() != null) {
             oldRecipe.setImage(recipe.getImage());
         }
-        
+
         if (recipe.getDescription() != null) {
             oldRecipe.setDescription(recipe.getDescription());
         }
@@ -81,7 +81,7 @@ public class RecipeServiceImpl implements RecipeService {
         } else {
             recipe.getLikes().add(user.getId());
         }
-        
+
         return recipeRepository.save(recipe);
     }
 }

@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
 import { RecipeServiceService } from '../../services/recipe/recipe-service.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-recipe-form',
@@ -24,15 +25,21 @@ export class CreateRecipeFormComponent {
     title: '',
     description: '',
     image: '',
-    foodType: '',
+    vegetarian: '',
   };
 
-  constructor(private recipeService: RecipeServiceService) {}
+  constructor(
+    private recipeService: RecipeServiceService,
+    private dialogRef: MatDialogRef<CreateRecipeFormComponent>
+  ) {}
 
   onSubmit() {
     // console.log('values', this.recipeItem);
     this.recipeService.createRecipe(this.recipeItem).subscribe({
-      next: (data) => console.log('created', data),
+      next: (data) => {
+        console.log('created', data);
+        this.dialogRef.close();
+      },
       error: (error) => console.log('error', error),
     });
   }

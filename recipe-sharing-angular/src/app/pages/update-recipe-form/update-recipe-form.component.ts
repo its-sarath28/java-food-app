@@ -5,7 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { RecipeServiceService } from '../../services/recipe/recipe-service.service';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-update-recipe-form',
@@ -30,13 +30,17 @@ export class UpdateRecipeFormComponent {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public recipe: any,
-    private recipeService: RecipeServiceService
+    private recipeService: RecipeServiceService,
+    private dialogRef: MatDialogRef<UpdateRecipeFormComponent>
   ) {}
 
   onSubmit() {
     // console.log('values', this.recipeItem);
     this.recipeService.updateRecipe(this.recipeItem).subscribe({
-      next: (data) => console.log('update', data),
+      next: (data) => {
+        console.log('update', data);
+        this.dialogRef.close();
+      },
       error: (error) => console.log('error', error),
     });
   }

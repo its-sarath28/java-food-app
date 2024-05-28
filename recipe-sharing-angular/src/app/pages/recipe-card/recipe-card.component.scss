@@ -4,9 +4,17 @@
 
 .example-card .recipe-image {
   width: 100%;
+  // height: 10rem;
   aspect-ratio: 1/1;
 }
 
 .example-card p {
   margin: 20px 0;
+}
+
+.label {
+  background: #c2185b;
+  width: fit-content;
+  padding: 5px 6px;
+  border-radius: 5px;
 }

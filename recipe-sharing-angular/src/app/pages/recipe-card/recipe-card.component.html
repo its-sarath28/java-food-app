@@ -1,29 +1,33 @@
 <mat-card class="example-card">
     <mat-card-header class="">
         <img mat-card-avatar class="example-header-image"
-            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGVvcGxlfGVufDB8fDB8fHww"
+            src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?size=626&ext=jpg"
             alt="profile" />
         <mat-card-title class="">{{recipe.title}}</mat-card-title>
         <mat-card-subtitle>{{recipe.user.fullName}}</mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image class="max-h-[300px] object-cover recipe-image" [src]="recipe.image" [alt]="recipe.title">
     <mat-card-content>
+        <p class="label">
+            <span *ngIf="recipe.vegetarian; else nonVeg">Vegetarian</span>
+            <ng-template #nonVeg>Non Vegetarian</ng-template>
+        </p>
         <p class="">
             {{recipe.description}}
         </p>
     </mat-card-content>
     <mat-card-actions class="flex justify-between mb-3">
         <div>
-            <button mat-icon-button aria-label="Example icon button with a favorite icon">
+            <!-- <button mat-icon-button aria-label="Example icon button with a favorite icon">
                 <mat-icon>favorite</mat-icon>
-            </button>
+            </button> -->
             <button (click)="handleOpenEditRecipeForm()" mat-icon-button
                 aria-label="Example icon button with a filter list icon">
                 <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button aria-label="Example icon button with a share icon">
+            <!-- <button mat-icon-button aria-label="Example icon button with a share icon">
                 <mat-icon>share</mat-icon>
-            </button>
+            </button> -->
         </div>
 
         <div>
